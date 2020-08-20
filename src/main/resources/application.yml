@@ -13,6 +13,9 @@ camunda.bpm:
     metrics:
       enabled: false
       db-reporter-activate: false
+  camunda:
+    bpm:
+      auto-deployment-enabled: false
 
 spring:
   application:
@@ -22,5 +25,4 @@ spring:
     url: jdbc:mysql://119.23.74.131/camunda?serverTimezone=GMT%2B8&autoReconnect=true&useUnicode=yes&characterEncoding=UTF-8&useSSL=false
     username: root
     password: FFFFFREWRET%GFHGJ23243dsdsf
-
 
