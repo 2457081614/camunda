@@ -1,0 +1,26 @@
+camunda.bpm:
+  database:
+    type: mysql
+    schema-update: true
+  admin-user:
+    id: demo
+    password: demo
+    firstName: Demo
+  filter:
+    create: All tasks
+  job-execution:
+    enabled: true
+    metrics:
+      enabled: false
+      db-reporter-activate: false
+
+spring:
+  application:
+    name: wct-iot
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://119.23.74.131/camunda?serverTimezone=GMT%2B8&autoReconnect=true&useUnicode=yes&characterEncoding=UTF-8&useSSL=false
+    username: root
+    password: FFFFFREWRET%GFHGJ23243dsdsf
+
+
