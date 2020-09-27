@@ -13,9 +13,7 @@ camunda.bpm:
     metrics:
       enabled: false
       db-reporter-activate: false
-  camunda:
-    bpm:
-      auto-deployment-enabled: false
+  autoDeploymentEnabled : false
 
 spring:
   application:

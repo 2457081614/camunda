@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_1ba1r2i" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="4.2.0">
+  <bpmn:process id="Process_19q4oj1" isExecutable="true">
+    <bpmn:extensionElements>
+      <camunda:executionListener class="com.example.camunda.listener.ServiceBackListener" event="start" />
+    </bpmn:extensionElements>
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:outgoing>Flow_19v7ebn</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:intermediateThrowEvent id="Event_1617krr">
+      <bpmn:extensionElements>
+        <camunda:executionListener class="com.example.camunda.listener.RollBackListener" event="start" />
+      </bpmn:extensionElements>
+      <bpmn:outgoing>Flow_1hrss6j</bpmn:outgoing>
+      <bpmn:compensateEventDefinition id="CompensateEventDefinition_0w6fur8" />
+    </bpmn:intermediateThrowEvent>
+    <bpmn:sequenceFlow id="Flow_1hrss6j" sourceRef="Event_1617krr" targetRef="Activity_1noetht" />
+    <bpmn:sequenceFlow id="Flow_19v7ebn" sourceRef="StartEvent_1" targetRef="Activity_1noetht" />
+    <bpmn:endEvent id="Event_150ijvu">
+      <bpmn:incoming>Flow_1rsdpe2</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_1rsdpe2" sourceRef="Activity_1noetht" targetRef="Event_150ijvu" />
+    <bpmn:serviceTask id="Activity_1noetht" name="事件测试">
+      <bpmn:incoming>Flow_1hrss6j</bpmn:incoming>
+      <bpmn:incoming>Flow_19v7ebn</bpmn:incoming>
+      <bpmn:outgoing>Flow_1rsdpe2</bpmn:outgoing>
+    </bpmn:serviceTask>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_19q4oj1">
+      <bpmndi:BPMNEdge id="Flow_1hrss6j_di" bpmnElement="Flow_1hrss6j">
+        <di:waypoint x="302" y="181" />
+        <di:waypoint x="280" y="181" />
+        <di:waypoint x="280" y="160" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_19v7ebn_di" bpmnElement="Flow_19v7ebn">
+        <di:waypoint x="188" y="120" />
+        <di:waypoint x="230" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1rsdpe2_di" bpmnElement="Flow_1rsdpe2">
+        <di:waypoint x="330" y="120" />
+        <di:waypoint x="362" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Event_0vwbiz3_di" bpmnElement="Event_1617krr">
+        <dc:Bounds x="302" y="163" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="152" y="102" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_150ijvu_di" bpmnElement="Event_150ijvu">
+        <dc:Bounds x="362" y="102" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0lzufan_di" bpmnElement="Activity_1noetht">
+        <dc:Bounds x="230" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
